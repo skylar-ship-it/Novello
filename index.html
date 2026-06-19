@@ -4,389 +4,477 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nicole Covello Therapy — Brand Guidelines</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Raleway:wght@300;400;500;600;700&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Cormorant:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    /* ─── BRAND COLORS ─── */
-    --rust:        #8B3A14;  /* primary — deep terracotta/rust */
-    --rust-dark:   #6E2D0E;  /* deeper rust for hover, borders */
-    --rust-light:  #A04B20;  /* mid rust accent */
-    --sand:        #D9B899;  /* warm sand / skin tone neutral */
-    --cream:       #E8D5C0;  /* light peach-cream background */
-    --dusk:        #7FA8C4;  /* muted steel blue accent */
-    --dusk-dark:   #5A8AAA;  /* deeper blue for text on light */
-    --ink:         #2C1A10;  /* near-black warm ink for body text */
-    --ink-mid:     #4A2D1C;  /* warm dark brown mid */
-    --white:       #F9F4EE;  /* off-white / warm white */
-    --fog:         #B8C4CC;  /* input field blue-grey */
+    --rust:        #8B3A14;
+    --rust-dark:   #6E2D0E;
+    --sand:        #D9B899;
+    --cream:       #E8D5C0;
+    --cream-light: #EFE0CC;
+    --dusk:        #7FA8C4;
+    --ink:         #2C1A10;
+    --ink-mid:     #4A2D1C;
+    --white:       #F9F4EE;
 
-    /* ─── TYPOGRAPHY ─── */
-    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-display: 'Cormorant Garamond', 'Cormorant', Georgia, serif;
     --font-ui:      'Raleway', sans-serif;
-    --font-body:    'Jost', sans-serif;
 
-    /* ─── SPACING ─── */
-    --space-xs:  8px;
-    --space-sm:  16px;
-    --space-md:  32px;
-    --space-lg:  56px;
-    --space-xl:  88px;
-    --space-2xl: 128px;
-
-    /* ─── RADIUS ─── */
-    --radius-sm:   6px;
-    --radius-md:   16px;
-    --radius-lg:   32px;
-    --radius-pill: 100px;
-    --radius-arch: 50% 50% 0 0 / 60% 60% 0 0;
+    --r-sm:  6px;
+    --r-md:  16px;
+    --r-lg:  32px;
+    --r-pill: 100px;
   }
 
   html { scroll-behavior: smooth; }
+
   body {
-    font-family: var(--font-body);
+    font-family: var(--font-display);
     background: var(--white);
     color: var(--ink);
     line-height: 1.6;
   }
 
-  /* ──────────────────────────────────────────
-     COVER
-  ────────────────────────────────────────── */
+  /* ─── COVER ─── */
   .cover {
     background: var(--rust);
-    color: var(--white);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: var(--space-xl) var(--space-xl);
+    justify-content: flex-end;
+    padding: 72px 80px;
     position: relative;
     overflow: hidden;
   }
-  .cover::before {
-    content: '';
+  .cover-video {
     position: absolute;
-    bottom: -80px; left: -80px;
-    width: 420px; height: 420px;
-    background: var(--rust-light);
-    border-radius: 50%;
-    opacity: 0.3;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    z-index: 0;
+    pointer-events: none;
   }
-  .cover::after {
-    content: '';
+  .cover-overlay {
     position: absolute;
-    top: -60px; right: -60px;
-    width: 300px; height: 300px;
-    background: var(--rust-dark);
-    border-radius: 50%;
-    opacity: 0.4;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(110, 45, 14, 0.45) 0%,
+      rgba(110, 45, 14, 0.25) 40%,
+      rgba(44, 26, 16, 0.75) 100%
+    );
+    z-index: 1;
   }
-  .cover-logo {
-    font-family: var(--font-display);
-    font-size: 13px;
-    font-weight: 300;
-    letter-spacing: 0.3em;
+  .cover-content {
+    position: relative;
+    z-index: 2;
+  }
+  .cover-eyebrow {
+    font-family: var(--font-ui);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.35em;
     text-transform: uppercase;
     color: var(--sand);
-    margin-bottom: var(--space-lg);
-    position: relative; z-index: 1;
+    margin-bottom: 24px;
+    opacity: 0.8;
   }
   .cover-title {
     font-family: var(--font-display);
-    font-size: clamp(52px, 8vw, 96px);
+    font-size: clamp(64px, 10vw, 120px);
     font-weight: 300;
-    line-height: 1.0;
+    line-height: 0.95;
     color: var(--white);
-    letter-spacing: -0.01em;
-    margin-bottom: var(--space-sm);
-    position: relative; z-index: 1;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
   }
   .cover-title em {
     font-style: italic;
     color: var(--sand);
+    display: block;
   }
-  .cover-sub {
-    font-family: var(--font-ui);
-    font-size: 12px;
-    font-weight: 400;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--sand);
-    opacity: 0.8;
-    margin-bottom: var(--space-xl);
-    position: relative; z-index: 1;
-  }
+  .cover-rule { width: 100%; height: 1px; background: var(--sand); opacity: 0.25; margin: 32px 0; }
   .cover-meta {
     font-family: var(--font-ui);
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 300;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--sand);
     opacity: 0.5;
-    position: relative; z-index: 1;
+  }
+  .cover-deco {
+    position: absolute;
+    top: 80px; right: 80px;
+    font-family: var(--font-display);
+    font-size: 280px;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(255,255,255,0.06);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    z-index: 2;
   }
 
-  /* ──────────────────────────────────────────
-     SECTION WRAPPERS
-  ────────────────────────────────────────── */
-  .section {
-    padding: var(--space-xl) var(--space-xl);
-    max-width: 1100px;
-    margin: 0 auto;
+  /* ─── TOC ─── */
+  .toc-section {
+    background: var(--cream);
+    padding: 88px 80px;
   }
-  .section-full {
-    padding: var(--space-xl) var(--space-xl);
-    width: 100%;
-  }
-  .divider {
-    border: none;
-    border-top: 1px solid var(--sand);
-    margin: var(--space-lg) 0;
-    opacity: 0.5;
-  }
-  .section-label {
+  .toc-inner { max-width: 1100px; margin: 0 auto; }
+  .eyebrow {
     font-family: var(--font-ui);
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.35em;
     text-transform: uppercase;
     color: var(--rust);
-    margin-bottom: var(--space-md);
+    margin-bottom: 24px;
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
   }
-  .section-label::after {
+  .eyebrow::after {
     content: '';
     display: block;
     height: 1px;
     width: 48px;
     background: var(--rust);
-    opacity: 0.4;
+    opacity: 0.35;
   }
-  .section-title {
+  .sec-title {
     font-family: var(--font-display);
-    font-size: clamp(38px, 5vw, 64px);
+    font-size: clamp(42px, 5.5vw, 72px);
     font-weight: 300;
-    line-height: 1.1;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    line-height: 1.0;
     color: var(--ink);
-    margin-bottom: var(--space-md);
-    letter-spacing: -0.01em;
+    margin-bottom: 48px;
   }
-  .section-title em { font-style: italic; color: var(--rust); }
-  .body-copy {
-    font-family: var(--font-ui);
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 1.8;
-    color: var(--ink-mid);
-    max-width: 640px;
+  .sec-title em { font-style: italic; color: var(--rust); text-transform: none; }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    list-style: none;
+    counter-reset: toc;
   }
+  .toc-grid li {
+    counter-increment: toc;
+    border-top: 1px solid rgba(139,58,20,0.15);
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+  .toc-grid li::before {
+    content: counter(toc, decimal-leading-zero);
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--rust);
+    opacity: 0.35;
+    min-width: 40px;
+  }
+  .toc-grid a {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 300;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .toc-grid a:hover { color: var(--rust); }
 
-  /* ──────────────────────────────────────────
-     BRAND STORY
-  ────────────────────────────────────────── */
-  .brand-story {
-    background: var(--cream);
-    padding: var(--space-xl) var(--space-xl);
+  /* ─── BRAND STORY ─── */
+  .story-section {
+    padding: 88px 80px;
+    background: var(--white);
   }
-  .brand-story-inner {
+  .story-inner {
     max-width: 1100px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: var(--space-xl);
+    gap: 80px;
     align-items: start;
   }
-  .brand-story-quote {
+  .body-serif {
     font-family: var(--font-display);
-    font-size: clamp(22px, 3vw, 34px);
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 1.75;
+    color: var(--ink-mid);
+    margin-bottom: 20px;
+    letter-spacing: 0.01em;
+  }
+  .pull-quote {
+    font-family: var(--font-display);
+    font-size: clamp(22px, 2.5vw, 30px);
     font-style: italic;
     font-weight: 300;
     color: var(--rust);
-    line-height: 1.4;
-    padding-left: var(--space-md);
+    line-height: 1.45;
     border-left: 2px solid var(--rust);
-    margin-top: var(--space-md);
+    padding-left: 28px;
+    margin: 40px 0;
+  }
+  .pillar {
+    display: flex;
+    gap: 18px;
+    align-items: flex-start;
+    margin-bottom: 28px;
+  }
+  .pillar-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 8px;
+  }
+  .pillar-name {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .pillar-desc {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--ink-mid);
+    line-height: 1.7;
   }
 
-  /* ──────────────────────────────────────────
-     COLOR PALETTE
-  ────────────────────────────────────────── */
-  .palette-bg {
+  /* ─── COLOR ─── */
+  .color-section {
     background: var(--ink);
-    padding: var(--space-xl) var(--space-xl);
+    padding: 88px 80px;
   }
-  .palette-bg .section-label { color: var(--sand); }
-  .palette-bg .section-label::after { background: var(--sand); }
-  .palette-bg .section-title { color: var(--white); }
-  .palette-bg .section-title em { color: var(--sand); }
-
+  .color-inner { max-width: 1100px; margin: 0 auto; }
+  .on-dark-eyebrow { color: var(--sand); opacity: 0.7; }
+  .on-dark-eyebrow::after { background: var(--sand); }
+  .on-dark-title { color: var(--white); }
+  .on-dark-title em { color: var(--sand); }
   .color-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-    gap: var(--space-sm);
-    margin-top: var(--space-md);
+    grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+    gap: 14px;
+    margin-top: 40px;
   }
-  .swatch {
-    border-radius: var(--radius-md);
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.06);
-  }
-  .swatch-block {
-    height: 120px;
-    width: 100%;
+  .swatch { border-radius: var(--r-md); overflow: hidden; }
+  .swatch-chip {
+    height: 108px;
     position: relative;
   }
-  .swatch-block .primary-badge {
+  .primary-pill {
     position: absolute;
     top: 10px; right: 10px;
-    background: rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.18);
     color: white;
     font-family: var(--font-ui);
-    font-size: 9px;
+    font-size: 8px;
     font-weight: 600;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    padding: 3px 8px;
+    padding: 3px 9px;
     border-radius: 100px;
   }
   .swatch-info {
     padding: 14px 16px;
-    background: #1a1410;
+    background: #1a1208;
   }
   .swatch-name {
-    font-family: var(--font-ui);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
     color: var(--white);
-    margin-bottom: 4px;
+    margin-bottom: 2px;
   }
   .swatch-hex {
     font-family: 'Courier New', monospace;
     font-size: 11px;
     color: var(--sand);
-    opacity: 0.7;
-    margin-bottom: 4px;
+    opacity: 0.6;
+    margin-bottom: 6px;
   }
-  .swatch-usage {
-    font-family: var(--font-body);
-    font-size: 10px;
+  .swatch-use {
+    font-family: var(--font-display);
+    font-size: 13px;
     color: var(--sand);
     opacity: 0.5;
     line-height: 1.5;
   }
 
-  /* ──────────────────────────────────────────
-     TYPOGRAPHY
-  ────────────────────────────────────────── */
-  .type-section { background: var(--white); }
-  .type-grid {
+  /* pairs */
+  .pair-row {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-xl);
-    margin-top: var(--space-md);
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 40px;
   }
-  .type-block {
-    padding: var(--space-md);
-    border: 1px solid rgba(139,58,20,0.12);
-    border-radius: var(--radius-md);
+  .pair-card { border-radius: var(--r-md); overflow: hidden; }
+  .pair-top {
+    height: 72px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  .type-role {
+  .pair-sample {
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+  }
+  .pair-label {
+    padding: 10px 14px;
+    background: #1a1208;
+    font-family: var(--font-display);
+    font-size: 13px;
+    color: var(--sand);
+    opacity: 0.6;
+    letter-spacing: 0.03em;
+  }
+
+  /* ─── TYPOGRAPHY ─── */
+  .type-section {
+    background: var(--cream-light);
+    padding: 88px 80px;
+  }
+  .type-inner { max-width: 1100px; margin: 0 auto; }
+
+  /* live specimens */
+  .specimen-hero {
+    font-family: var(--font-display);
+    font-size: clamp(56px, 9vw, 108px);
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    line-height: 0.95;
+    color: var(--ink);
+    margin: 32px 0 8px;
+  }
+  .specimen-hero em {
+    font-style: italic;
+    color: var(--rust);
+    text-transform: none;
+    letter-spacing: -0.01em;
+  }
+
+  .specimen-section {
+    font-family: var(--font-display);
+    font-size: clamp(40px, 6vw, 80px);
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    line-height: 1.0;
+    color: var(--ink);
+    margin: 16px 0;
+  }
+
+  .specimen-nav {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4.5vw, 56px);
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+
+  .specimen-focus {
+    font-family: var(--font-display);
+    font-size: clamp(24px, 3vw, 40px);
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+  }
+  .specimen-focus em {
+    font-style: normal;
+    border: 1.5px solid currentColor;
+    border-radius: 100px;
+    padding: 2px 18px 0;
+  }
+
+  .specimen-eyebrow-text {
     font-family: var(--font-ui);
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 600;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--rust);
+  }
+
+  .specimen-body {
+    font-family: var(--font-display);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.75;
+    color: var(--ink-mid);
+    letter-spacing: 0.01em;
+    max-width: 600px;
+  }
+
+  .specimen-caps {
+    font-family: var(--font-display);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+  }
+
+  .specimen-btn-text {
+    font-family: var(--font-ui);
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white);
+  }
+
+  /* type scale table */
+  .ts-table { width: 100%; border-collapse: collapse; margin-top: 40px; }
+  .ts-table th {
+    font-family: var(--font-ui);
+    font-size: 9px;
+    font-weight: 700;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--rust);
-    margin-bottom: var(--space-sm);
+    text-align: left;
+    padding: 10px 16px;
+    border-bottom: 1px solid rgba(139,58,20,0.2);
   }
-  .type-specimen-display {
-    font-family: var(--font-display);
-    font-size: 52px;
-    font-weight: 300;
-    line-height: 1.05;
-    color: var(--ink);
-    letter-spacing: -0.01em;
-    margin-bottom: var(--space-sm);
+  .ts-table td {
+    padding: 16px;
+    border-bottom: 1px solid rgba(139,58,20,0.08);
+    vertical-align: middle;
   }
-  .type-specimen-italic {
-    font-family: var(--font-display);
-    font-size: 52px;
-    font-style: italic;
-    font-weight: 300;
-    line-height: 1.05;
-    color: var(--rust);
-    letter-spacing: -0.01em;
-    margin-bottom: var(--space-sm);
-  }
-  .type-specimen-ui {
+  .ts-table td:first-child {
     font-family: var(--font-ui);
-    font-size: 28px;
-    font-weight: 300;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--ink);
-    margin-bottom: var(--space-sm);
-  }
-  .type-specimen-body {
-    font-family: var(--font-body);
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 1.8;
-    color: var(--ink-mid);
-    margin-bottom: var(--space-sm);
-  }
-  .type-meta {
-    font-family: var(--font-ui);
-    font-size: 11px;
-    font-weight: 400;
-    color: var(--rust);
-    opacity: 0.6;
-    border-top: 1px solid rgba(139,58,20,0.1);
-    padding-top: var(--space-sm);
-    margin-top: var(--space-sm);
-  }
-
-  .type-scale-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: var(--space-md);
-  }
-  .type-scale-table th {
-    font-family: var(--font-ui);
-    font-size: 10px;
-    font-weight: 600;
+    font-size: 9px;
+    font-weight: 700;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--rust);
-    text-align: left;
-    padding: var(--space-xs) var(--space-sm);
-    border-bottom: 1px solid rgba(139,58,20,0.15);
-  }
-  .type-scale-table td {
-    padding: var(--space-sm) var(--space-sm);
-    border-bottom: 1px solid rgba(139,58,20,0.06);
-    vertical-align: middle;
-  }
-  .type-scale-table td:first-child {
-    font-family: var(--font-ui);
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--rust);
     white-space: nowrap;
-    width: 110px;
+    width: 120px;
   }
-  .type-scale-table td:nth-child(2) { color: var(--ink); }
-  .type-scale-table td:last-child {
+  .ts-table td:last-child {
     font-family: 'Courier New', monospace;
     font-size: 11px;
     color: var(--ink-mid);
@@ -394,35 +482,107 @@
     white-space: nowrap;
   }
 
-  /* ──────────────────────────────────────────
-     COMPONENTS
-  ────────────────────────────────────────── */
-  .components-bg { background: var(--cream); }
-  .component-grid {
+  /* font pairing block */
+  .pairing-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-md);
-    margin-top: var(--space-md);
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-top: 40px;
   }
-  .component-card {
+  .font-card {
     background: var(--white);
-    border-radius: var(--radius-md);
-    padding: var(--space-md);
+    border-radius: var(--r-md);
+    padding: 32px 28px;
     border: 1px solid rgba(139,58,20,0.1);
   }
-  .component-card h4 {
+  .font-role {
     font-family: var(--font-ui);
-    font-size: 10px;
-    font-weight: 600;
+    font-size: 9px;
+    font-weight: 700;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     color: var(--rust);
-    margin-bottom: var(--space-md);
-    padding-bottom: var(--space-xs);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
     border-bottom: 1px solid rgba(139,58,20,0.1);
   }
+  .font-name-display {
+    font-family: var(--font-display);
+    font-size: 42px;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+  .font-name-italic {
+    font-family: var(--font-display);
+    font-size: 42px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--rust);
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  .font-name-ui {
+    font-family: var(--font-ui);
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .font-desc {
+    font-family: var(--font-display);
+    font-size: 15px;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    opacity: 0.7;
+    margin-bottom: 16px;
+  }
+  .font-meta {
+    font-family: var(--font-ui);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--rust);
+    opacity: 0.55;
+    border-top: 1px solid rgba(139,58,20,0.1);
+    padding-top: 14px;
+    line-height: 1.8;
+  }
 
-  /* ── BUTTONS ── */
+  /* ─── COMPONENTS ─── */
+  .comp-section { background: var(--white); padding: 88px 80px; }
+  .comp-inner { max-width: 1100px; margin: 0 auto; }
+  .comp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .comp-card {
+    background: var(--cream-light);
+    border-radius: var(--r-md);
+    padding: 32px 28px;
+    border: 1px solid rgba(139,58,20,0.08);
+  }
+  .comp-label {
+    font-family: var(--font-ui);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(139,58,20,0.12);
+  }
+
+  /* buttons */
   .btn-primary {
     display: inline-block;
     background: var(--rust);
@@ -430,37 +590,29 @@
     font-family: var(--font-ui);
     font-size: 12px;
     font-weight: 400;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    text-decoration: none;
-    padding: 18px 36px;
-    border-radius: var(--radius-pill);
+    padding: 18px 38px;
+    border-radius: var(--r-pill);
     border: none;
     cursor: pointer;
-    transition: background 0.25s ease;
-    margin: 6px;
+    margin: 5px;
   }
-  .btn-primary:hover { background: var(--rust-dark); }
-
-  .btn-secondary {
+  .btn-outline {
     display: inline-block;
     background: transparent;
     color: var(--rust);
     font-family: var(--font-ui);
     font-size: 12px;
     font-weight: 400;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    text-decoration: none;
-    padding: 17px 34px;
-    border-radius: var(--radius-pill);
+    padding: 17px 36px;
+    border-radius: var(--r-pill);
     border: 1.5px solid var(--rust);
     cursor: pointer;
-    transition: all 0.25s ease;
-    margin: 6px;
+    margin: 5px;
   }
-  .btn-secondary:hover { background: var(--rust); color: var(--white); }
-
   .btn-ghost {
     display: inline-block;
     background: transparent;
@@ -468,125 +620,105 @@
     font-family: var(--font-ui);
     font-size: 12px;
     font-weight: 400;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    text-decoration: none;
-    padding: 17px 34px;
-    border-radius: var(--radius-pill);
-    border: 1.5px solid rgba(255,255,255,0.5);
+    padding: 17px 36px;
+    border-radius: var(--r-pill);
+    border: 1.5px solid rgba(255,255,255,0.45);
     cursor: pointer;
-    margin: 6px;
+    margin: 5px;
   }
+  .ghost-bg { background: var(--dusk); border-radius: 10px; padding: 20px; margin-top: 10px; }
 
-  .btn-row {
-    background: var(--dusk);
-    border-radius: var(--radius-sm);
-    padding: var(--space-md);
-    margin-top: 8px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    align-items: center;
-  }
-
-  /* ── FORM FIELDS ── */
-  .field-demo {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-  }
+  /* form */
+  .form-demo { background: var(--rust); border-radius: 10px; padding: 24px 20px; }
   .field-label {
+    display: block;
     font-family: var(--font-ui);
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 500;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--white);
-    display: block;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
   .field-input {
     display: block;
     width: 100%;
     background: var(--dusk);
     border: none;
-    border-radius: var(--radius-sm);
-    padding: 14px 16px;
-    font-family: var(--font-body);
-    font-size: 13px;
+    border-radius: 6px;
+    padding: 13px 15px;
+    font-family: var(--font-display);
+    font-size: 16px;
     color: var(--ink);
+    margin-bottom: 14px;
     outline: none;
   }
-  .field-wrapper {
-    background: var(--rust);
-    border-radius: var(--radius-sm);
-    padding: var(--space-md);
-  }
 
-  /* ── ARCH PHOTO FRAME ── */
-  .arch-demo {
-    width: 140px;
-    height: 180px;
-    border-radius: 70px 70px 0 0;
-    overflow: hidden;
-    background: linear-gradient(135deg, var(--sand) 0%, var(--cream) 100%);
-    margin: 0 auto var(--space-sm);
+  /* arch */
+  .arch-frame {
+    width: 120px;
+    height: 155px;
+    border-radius: 60px 60px 0 0;
+    background: linear-gradient(160deg, var(--sand) 0%, var(--cream) 100%);
+    margin: 0 auto 10px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid rgba(139,58,20,0.15);
+    border: 1.5px solid rgba(139,58,20,0.2);
   }
-  .arch-demo-label {
-    font-family: var(--font-ui);
-    font-size: 10px;
-    font-weight: 500;
-    letter-spacing: 0.15em;
+  .arch-label {
+    font-family: var(--font-display);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--rust);
     opacity: 0.5;
     text-align: center;
   }
 
-  /* ── NAV ITEM ── */
+  /* nav overlay */
   .nav-demo {
     background: var(--dusk);
-    border-radius: var(--radius-sm);
-    padding: var(--space-md);
+    border-radius: 10px;
+    padding: 28px 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-sm);
+    gap: 6px;
   }
-  .nav-item {
+  .nav-link {
     font-family: var(--font-display);
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 300;
-    color: var(--ink);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    text-decoration: none;
-    cursor: default;
+    letter-spacing: 0.06em;
+    color: var(--ink);
+    line-height: 1.35;
   }
 
-  /* ── PHILOSOPHY BLOCK ── */
+  /* philosophy */
   .phil-demo {
     background: var(--rust);
-    border-radius: var(--radius-sm);
-    padding: var(--space-md);
+    border-radius: 10px;
+    padding: 28px 24px;
     color: var(--white);
   }
   .phil-demo h3 {
     font-family: var(--font-display);
-    font-size: 36px;
+    font-size: 44px;
     font-weight: 300;
-    color: var(--white);
     text-transform: uppercase;
-    letter-spacing: 0.02em;
-    margin-bottom: var(--space-sm);
+    letter-spacing: 0.03em;
+    color: var(--white);
+    margin-bottom: 16px;
+    line-height: 1.0;
   }
   .phil-demo p {
-    font-family: var(--font-ui);
-    font-size: 11px;
+    font-family: var(--font-display);
+    font-size: 14px;
     font-weight: 400;
     letter-spacing: 0.08em;
     text-transform: uppercase;
@@ -594,732 +726,699 @@
     color: var(--sand);
   }
 
-  /* ── WAVE DIVIDER ── */
-  .wave-demo {
-    background: var(--cream);
-    border-radius: var(--radius-sm);
-    padding: var(--space-md);
-    overflow: hidden;
-    position: relative;
-  }
-  .wave-demo .top { background: var(--cream); height: 60px; }
-  .wave-demo .bottom { background: var(--rust); height: 60px; margin-top: -1px; }
-  .wave-svg { width: 100%; display: block; }
+  /* wave */
+  .wave-demo { background: var(--cream); border-radius: 10px; overflow: hidden; }
+  .wave-top { background: var(--cream); height: 40px; }
+  .wave-btm { background: var(--rust); height: 40px; margin-top: -1px; }
 
-  /* ──────────────────────────────────────────
-     LAYOUT RULES
-  ────────────────────────────────────────── */
-  .layout-bg { background: var(--white); }
-  .rules-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: var(--space-md);
-    margin-top: var(--space-md);
+  /* focus pill */
+  .focus-demo {
+    background: var(--dusk);
+    border-radius: 10px;
+    padding: 28px 24px;
   }
-  .rule-card {
-    padding: var(--space-md);
-    border-left: 3px solid var(--rust);
-    background: var(--cream);
-    border-radius: 0 var(--radius-md) var(--radius-md) 0;
-  }
-  .rule-card h4 {
-    font-family: var(--font-ui);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.3em;
+  .areas-heading {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 300;
     text-transform: uppercase;
-    color: var(--rust);
-    margin-bottom: 10px;
-  }
-  .rule-card p {
-    font-family: var(--font-body);
-    font-size: 13px;
-    color: var(--ink-mid);
-    line-height: 1.7;
-  }
-
-  /* ──────────────────────────────────────────
-     DO / DON'T
-  ────────────────────────────────────────── */
-  .do-dont-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--space-md);
-    margin-top: var(--space-md);
-  }
-  .do-card {
-    padding: var(--space-md);
-    border-radius: var(--radius-md);
-    border-top: 3px solid #4CAF73;
-    background: var(--white);
-  }
-  .dont-card {
-    padding: var(--space-md);
-    border-radius: var(--radius-md);
-    border-top: 3px solid #C0392B;
-    background: var(--white);
-  }
-  .do-card h4 {
-    font-family: var(--font-ui);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: #4CAF73;
-    margin-bottom: 12px;
-  }
-  .dont-card h4 {
-    font-family: var(--font-ui);
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: #C0392B;
-    margin-bottom: 12px;
-  }
-  .do-card li, .dont-card li {
-    font-family: var(--font-body);
-    font-size: 13px;
-    color: var(--ink-mid);
-    line-height: 1.7;
-    margin-left: 16px;
+    letter-spacing: 0.06em;
+    color: var(--ink);
     margin-bottom: 6px;
   }
-
-  /* ──────────────────────────────────────────
-     SECTION PAGE STRUCTURE
-  ────────────────────────────────────────── */
-  .page-map-bg { background: var(--dusk); padding: var(--space-xl) var(--space-xl); }
-  .page-map-bg .section-label { color: var(--white); }
-  .page-map-bg .section-label::after { background: var(--white); }
-  .page-map-bg .section-title { color: var(--white); }
-  .page-map-bg .section-title em { color: var(--sand); }
-  .page-map-bg .body-copy { color: rgba(255,255,255,0.75); }
-
-  .page-sections {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: var(--space-sm);
-    margin-top: var(--space-md);
+  .areas-heading em {
+    font-style: normal;
+    display: inline-block;
+    border: 1.5px solid var(--ink);
+    border-radius: 100px;
+    padding: 0 14px;
   }
-  .page-section-card {
-    background: rgba(255,255,255,0.12);
-    border-radius: var(--radius-md);
-    padding: var(--space-md);
-    border: 1px solid rgba(255,255,255,0.15);
-  }
-  .page-section-card .num {
+  .areas-sub {
     font-family: var(--font-display);
-    font-size: 40px;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+    margin-top: 10px;
+    line-height: 1.8;
+  }
+
+  /* ─── PAGE STRUCTURE ─── */
+  .map-section { background: var(--rust); padding: 88px 80px; }
+  .map-inner { max-width: 1100px; margin: 0 auto; }
+  .map-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-top: 40px;
+  }
+  .map-card {
+    background: rgba(255,255,255,0.1);
+    border-radius: var(--r-md);
+    padding: 24px 20px;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .map-num {
+    font-family: var(--font-display);
+    font-size: 44px;
     font-weight: 300;
-    color: rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.15);
     line-height: 1;
     margin-bottom: 8px;
   }
-  .page-section-card h4 {
-    font-family: var(--font-ui);
-    font-size: 11px;
-    font-weight: 600;
-    letter-spacing: 0.2em;
+  .map-name {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
     color: var(--white);
     margin-bottom: 8px;
+    line-height: 1.2;
   }
-  .page-section-card p {
-    font-family: var(--font-body);
-    font-size: 12px;
-    color: rgba(255,255,255,0.6);
-    line-height: 1.6;
+  .map-desc {
+    font-family: var(--font-display);
+    font-size: 14px;
+    color: rgba(232,213,192,0.6);
+    line-height: 1.65;
   }
-  .page-section-card .bg-tag {
+  .map-bg-tag {
     display: inline-block;
-    margin-top: 10px;
+    margin-top: 12px;
     font-family: var(--font-ui);
-    font-size: 9px;
+    font-size: 8px;
     font-weight: 600;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     padding: 3px 10px;
     border-radius: 100px;
-    border: 1px solid rgba(255,255,255,0.3);
-    color: rgba(255,255,255,0.6);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.5);
   }
 
-  /* ──────────────────────────────────────────
-     LOGO ZONE
-  ────────────────────────────────────────── */
-  .logo-zone {
-    background: var(--ink);
-    padding: var(--space-xl) var(--space-xl);
-  }
-  .logo-zone .section-label { color: var(--sand); }
-  .logo-zone .section-label::after { background: var(--sand); }
-  .logo-zone .section-title { color: var(--white); }
-  .logo-variants {
+  /* ─── LAYOUT RULES ─── */
+  .layout-section { background: var(--cream-light); padding: 88px 80px; }
+  .layout-inner { max-width: 1100px; margin: 0 auto; }
+  .rule-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-md);
-    margin-top: var(--space-md);
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-top: 40px;
   }
-  .logo-variant-box {
-    border-radius: var(--radius-md);
-    padding: var(--space-md) var(--space-lg);
+  .rule-card {
+    background: var(--white);
+    border-radius: var(--r-md);
+    padding: 28px 24px;
+    border-left: 3px solid var(--rust);
+  }
+  .rule-name {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 12px;
+  }
+  .rule-body {
+    font-family: var(--font-display);
+    font-size: 16px;
+    color: var(--ink-mid);
+    line-height: 1.7;
+  }
+
+  /* spacing */
+  .space-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 20px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+  }
+  .space-item { text-align: center; }
+  .space-box { background: var(--rust); border-radius: 4px; margin: 0 auto 10px; opacity: 0.8; }
+  .space-label {
+    font-family: var(--font-display);
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--rust);
+  }
+
+  /* ─── LOGO ─── */
+  .logo-section { background: var(--ink); padding: 88px 80px; }
+  .logo-inner { max-width: 1100px; margin: 0 auto; }
+  .logo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-top: 40px;
+  }
+  .logo-box {
+    border-radius: var(--r-md);
+    padding: 48px 32px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
   }
-  .logo-variant-box.on-rust { background: var(--rust); }
-  .logo-variant-box.on-dusk { background: var(--dusk); }
-  .logo-variant-box.on-cream { background: var(--cream); }
-  .logo-mark {
-    width: 56px;
-    height: 56px;
+  .logo-mark-circle {
+    width: 60px; height: 60px;
     border-radius: 50%;
     border: 1.5px solid currentColor;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: var(--font-display);
-    font-size: 22px;
+    font-size: 26px;
     font-weight: 300;
     font-style: italic;
   }
-  .logo-mark.light { color: var(--white); border-color: rgba(255,255,255,0.5); }
-  .logo-mark.dark  { color: var(--rust);  border-color: rgba(139,58,20,0.4); }
-  .logo-wordmark {
+  .logo-wm {
     font-family: var(--font-display);
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 300;
-    letter-spacing: 0.15em;
-    text-align: center;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
+    text-align: center;
   }
-  .logo-wordmark.light { color: var(--white); }
-  .logo-wordmark.dark  { color: var(--ink); }
-  .logo-sub {
+  .logo-wm-sub {
     font-family: var(--font-ui);
     font-size: 9px;
-    font-weight: 400;
+    font-weight: 300;
     letter-spacing: 0.3em;
     text-transform: uppercase;
     text-align: center;
+    opacity: 0.5;
   }
-  .logo-sub.light { color: rgba(255,255,255,0.55); }
-  .logo-sub.dark  { color: rgba(44,26,16,0.45); }
-  .logo-label {
+  .logo-variant-name {
     font-family: var(--font-ui);
     font-size: 9px;
     font-weight: 600;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.25em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.35);
+    margin-top: 8px;
+    opacity: 0.4;
+    color: inherit;
     text-align: center;
-    margin-top: 4px;
   }
-  .logo-label.dark { color: rgba(44,26,16,0.35); }
 
-  /* ──────────────────────────────────────────
-     FOOTER
-  ────────────────────────────────────────── */
+  /* ─── DO DON'T ─── */
+  .dd-section { background: var(--white); padding: 88px 80px; }
+  .dd-inner { max-width: 1100px; margin: 0 auto; }
+  .dd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; }
+  .do-card, .dont-card {
+    border-radius: var(--r-md);
+    padding: 32px 28px;
+    background: var(--cream-light);
+  }
+  .do-card { border-top: 3px solid #4CAF73; }
+  .dont-card { border-top: 3px solid #C0392B; }
+  .dd-head {
+    font-family: var(--font-display);
+    font-size: 26px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+  .do-card .dd-head { color: #3a8a58; }
+  .dont-card .dd-head { color: #C0392B; }
+  .dd-list { list-style: none; }
+  .dd-list li {
+    font-family: var(--font-display);
+    font-size: 17px;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+  }
+  .do-card .dd-list li::before { content: '→'; position: absolute; left: 0; color: #4CAF73; }
+  .dont-card .dd-list li::before { content: '×'; position: absolute; left: 0; color: #C0392B; }
+
+  /* ─── FOOTER ─── */
   .kit-footer {
-    background: var(--rust-dark);
-    color: var(--sand);
-    padding: var(--space-lg) var(--space-xl);
+    background: var(--rust-dark, #6E2D0E);
+    padding: 40px 80px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: var(--space-sm);
+    gap: 16px;
   }
-  .kit-footer-brand {
+  .footer-brand {
     font-family: var(--font-display);
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 300;
     font-style: italic;
     color: var(--white);
+    letter-spacing: 0.04em;
   }
-  .kit-footer-meta {
+  .footer-meta {
     font-family: var(--font-ui);
     font-size: 10px;
-    font-weight: 400;
+    font-weight: 300;
     letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--sand);
-    opacity: 0.55;
+    opacity: 0.5;
   }
 
-  /* ──────────────────────────────────────────
-     TOC
-  ────────────────────────────────────────── */
-  .toc {
-    background: var(--cream);
-    padding: var(--space-xl) var(--space-xl);
-  }
-  .toc-inner { max-width: 1100px; margin: 0 auto; }
-  .toc-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    margin-top: var(--space-md);
-    list-style: none;
-    counter-reset: toc;
-  }
-  .toc-list li {
-    counter-increment: toc;
-    padding: 16px 0;
-    border-bottom: 1px solid rgba(139,58,20,0.12);
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-  .toc-list li::before {
-    content: counter(toc, decimal-leading-zero);
-    font-family: var(--font-display);
-    font-size: 20px;
-    font-weight: 300;
-    color: var(--rust);
-    opacity: 0.4;
-    min-width: 36px;
-  }
-  .toc-list a {
-    font-family: var(--font-ui);
-    font-size: 12px;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--ink);
-    text-decoration: none;
-  }
-  .toc-list a:hover { color: var(--rust); }
-
-  @media (max-width: 768px) {
-    .cover { padding: var(--space-md); }
-    .section, .section-full { padding: var(--space-lg) var(--space-md); }
-    .brand-story-inner, .type-grid, .component-grid,
-    .rules-grid, .do-dont-grid, .logo-variants, .toc-list {
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 820px) {
+    .cover, .toc-section, .story-section, .color-section,
+    .type-section, .comp-section, .map-section,
+    .layout-section, .logo-section, .dd-section, .kit-footer {
+      padding-left: 28px;
+      padding-right: 28px;
+    }
+    .story-inner, .pairing-grid, .comp-grid, .dd-grid,
+    .logo-grid, .rule-grid, .pair-row, .toc-grid {
       grid-template-columns: 1fr;
     }
-    .rules-grid { grid-template-columns: 1fr; }
-    .page-sections { grid-template-columns: 1fr; }
-    .palette-bg, .logo-zone, .page-map-bg, .brand-story {
-      padding: var(--space-lg) var(--space-md);
-    }
+    .map-grid { grid-template-columns: 1fr 1fr; }
+    .color-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
   }
 </style>
 </head>
 <body>
 
-<!-- ═══════════════════════════════════
-     COVER
-═══════════════════════════════════ -->
-<section class="cover" id="top">
-  <div class="cover-logo">Nicole Covello Therapy</div>
-  <h1 class="cover-title">Brand<br><em>Guidelines</em></h1>
-  <p class="cover-sub">Visual Identity &amp; Design System</p>
-  <p class="cover-meta">Version 1.0 · June 2026 · Confidential</p>
+<!-- COVER -->
+<section class="cover">
+  <video
+    class="cover-video"
+    src="https://raw.githubusercontent.com/skylar-ship-it/Novello/main/butterflies.mp4"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+  ></video>
+  <div class="cover-overlay"></div>
+  <div class="cover-content">
+    <div class="cover-deco">NC</div>
+    <div class="cover-eyebrow">Nicole Covello Therapy — Brand Guidelines</div>
+    <h1 class="cover-title">
+      Brand<br>
+      <em>Identity</em>
+    </h1>
+    <div class="cover-rule"></div>
+    <div class="cover-meta">Visual Design System · Version 1.0 · June 2026</div>
+  </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     TABLE OF CONTENTS
-═══════════════════════════════════ -->
-<section class="toc" id="toc">
+<!-- TOC -->
+<section class="toc-section" id="toc">
   <div class="toc-inner">
-    <div class="section-label">Contents</div>
-    <h2 class="section-title">What's <em>Inside</em></h2>
-    <ul class="toc-list">
-      <li><a href="#brand-story">Brand Identity & Story</a></li>
+    <div class="eyebrow">Contents</div>
+    <h2 class="sec-title">What's <em>Inside</em></h2>
+    <ul class="toc-grid">
+      <li><a href="#story">Brand Identity & Story</a></li>
       <li><a href="#color">Color Palette</a></li>
-      <li><a href="#typography">Typography System</a></li>
+      <li><a href="#type">Typography System</a></li>
       <li><a href="#components">UI Components</a></li>
-      <li><a href="#page-map">Page Structure</a></li>
-      <li><a href="#layout">Layout Rules</a></li>
+      <li><a href="#pages">Page Architecture</a></li>
+      <li><a href="#layout">Layout & Spacing</a></li>
       <li><a href="#logo">Logo Usage</a></li>
-      <li><a href="#do-dont">Do's &amp; Don'ts</a></li>
+      <li><a href="#dd">Do's & Don'ts</a></li>
     </ul>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     BRAND IDENTITY
-═══════════════════════════════════ -->
-<section class="brand-story" id="brand-story">
-  <div class="brand-story-inner">
+<!-- BRAND STORY -->
+<section class="story-section" id="story">
+  <div class="story-inner">
     <div>
-      <div class="section-label">01 — Brand Identity</div>
-      <h2 class="section-title">The <em>Soul</em><br>of the Brand</h2>
-      <p class="body-copy" style="margin-bottom: 20px;">
-        Nicole Covello Therapy occupies a rare space: the intersection of warmth and intellectual depth. This is not a clinical, sterile practice. It is a living, breathing invitation — an environment where people who have always held it together feel safe enough to finally let go.
-      </p>
-      <p class="body-copy" style="margin-bottom: 20px;">
-        The visual identity reflects this through an earthy, grounded warmth. Deep terracotta and rust carry courage and honesty. Muted steel blue brings calm, perspective, and openness. Peach-cream grounds everything in softness. Together they say: <em>you are held here.</em>
-      </p>
-      <p class="body-copy">
-        Typography pairs a classical display serif (Cormorant Garamond) used at large scale with clean uppercase Raleway for navigation and labels — creating a contrast between timeless depth and modern clarity. The overall effect is editorial without being cold; spiritual without being ambiguous.
-      </p>
+      <div class="eyebrow">01 — Brand Identity</div>
+      <h2 class="sec-title">The <em>Soul</em><br>of the Brand</h2>
+      <p class="body-serif">Nicole Covello Therapy occupies a rare space: the intersection of warmth and intellectual depth. This is not a clinical, sterile practice. It is a living invitation — an environment where people who have always held it together feel safe enough to finally let go.</p>
+      <p class="body-serif">The visual identity reflects this through earthy, grounded warmth. Deep terracotta and rust carry courage and honesty. Muted steel blue brings calm and perspective. Peach-cream grounds everything in softness. Together they say: <em style="font-style:italic; color:var(--rust);">you are held here.</em></p>
+      <p class="body-serif">Cormorant Garamond does almost all the heavy lifting — used at every scale from headline to body. Its classical elegance communicates timelessness, depth, and a quiet authority that never feels clinical.</p>
     </div>
     <div>
-      <div class="body-copy" style="margin-bottom: 24px; font-family: var(--font-ui); font-size: 11px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--rust); opacity: 0.7;">
-        Brand Pillars
+      <blockquote class="pull-quote">"When we pause to listen inward — beyond the noise — we may find that what we've been seeking has been within us all along."</blockquote>
+      <div class="pillar">
+        <div class="pillar-dot" style="background: var(--rust);"></div>
+        <div>
+          <div class="pillar-name">Courageous Welcome</div>
+          <div class="pillar-desc">Every visitor deserves acknowledgment before anything else. The brand meets them with warmth first.</div>
+        </div>
       </div>
-      <blockquote class="brand-story-quote">
-        "When we pause to listen inward — beyond the noise — we may find that what we've been seeking has been within us all along."
-      </blockquote>
-      <div style="margin-top: var(--space-md); display: flex; flex-direction: column; gap: 16px;">
-        <div style="display: flex; gap: 16px; align-items: flex-start;">
-          <div style="width: 32px; height: 32px; background: var(--rust); border-radius: 50%; flex-shrink: 0; margin-top: 2px;"></div>
-          <div>
-            <div style="font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); margin-bottom: 4px;">Courageous Welcome</div>
-            <div style="font-family: var(--font-body); font-size: 13px; color: var(--ink-mid); line-height: 1.7;">Every person who lands here deserves acknowledgment. The brand meets them with warmth before anything else.</div>
-          </div>
+      <div class="pillar">
+        <div class="pillar-dot" style="background: var(--dusk);"></div>
+        <div>
+          <div class="pillar-name">Intellectual Depth</div>
+          <div class="pillar-desc">Nicole's approach is nuanced and relational. The brand communicates seriousness without severity.</div>
         </div>
-        <div style="display: flex; gap: 16px; align-items: flex-start;">
-          <div style="width: 32px; height: 32px; background: var(--dusk); border-radius: 50%; flex-shrink: 0; margin-top: 2px;"></div>
-          <div>
-            <div style="font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); margin-bottom: 4px;">Intellectual Depth</div>
-            <div style="font-family: var(--font-body); font-size: 13px; color: var(--ink-mid); line-height: 1.7;">Nicole's approach is nuanced, relational, and grounded in theory. The brand communicates seriousness without severity.</div>
-          </div>
-        </div>
-        <div style="display: flex; gap: 16px; align-items: flex-start;">
-          <div style="width: 32px; height: 32px; background: var(--sand); border-radius: 50%; flex-shrink: 0; margin-top: 2px;"></div>
-          <div>
-            <div style="font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink); margin-bottom: 4px;">Human Complexity</div>
-            <div style="font-family: var(--font-body); font-size: 13px; color: var(--ink-mid); line-height: 1.7;">The gray is celebrated here. Contradictions are welcomed. The brand never oversimplifies healing.</div>
-          </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-dot" style="background: var(--sand);"></div>
+        <div>
+          <div class="pillar-name">Human Complexity</div>
+          <div class="pillar-desc">The gray is celebrated here. Contradictions are welcomed. The brand never oversimplifies healing.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     COLOR PALETTE
-═══════════════════════════════════ -->
-<section class="palette-bg" id="color">
-  <div style="max-width: 1100px; margin: 0 auto;">
-    <div class="section-label" style="color: var(--sand);">02 — Color Palette</div>
-    <h2 class="section-title" style="color: var(--white);">Color <em>System</em></h2>
-    <p class="body-copy" style="color: rgba(232,213,192,0.7); margin-bottom: var(--space-md);">
-      Seven colors. Each chosen for its psychological weight. Use with intention — this is not a palette to mix casually.
+<!-- COLOR -->
+<section class="color-section" id="color">
+  <div class="color-inner">
+    <div class="eyebrow on-dark-eyebrow">02 — Color Palette</div>
+    <h2 class="sec-title on-dark-title">Color <em>System</em></h2>
+    <p style="font-family:var(--font-display); font-size:18px; color:rgba(232,213,192,0.65); max-width:560px; margin-bottom:0; line-height:1.7; letter-spacing:0.01em;">
+      Seven colors. Each chosen for its psychological weight. Use with intention — not a palette to mix casually.
     </p>
     <div class="color-grid">
-
       <div class="swatch">
-        <div class="swatch-block" style="background: #8B3A14;">
-          <span class="primary-badge">Primary</span>
-        </div>
+        <div class="swatch-chip" style="background:#8B3A14;"><span class="primary-pill">Primary</span></div>
         <div class="swatch-info">
           <div class="swatch-name">Rust</div>
           <div class="swatch-hex">#8B3A14</div>
-          <div class="swatch-usage">CTAs, section backgrounds, headings on light bg, nav open state</div>
+          <div class="swatch-use">CTAs, section backgrounds, headings on light</div>
         </div>
       </div>
-
       <div class="swatch">
-        <div class="swatch-block" style="background: #6E2D0E;"></div>
+        <div class="swatch-chip" style="background:#6E2D0E;"></div>
         <div class="swatch-info">
           <div class="swatch-name">Rust Dark</div>
           <div class="swatch-hex">#6E2D0E</div>
-          <div class="swatch-usage">Button hover states, border accents, depth shadows</div>
+          <div class="swatch-use">Button hover, border accents, depth</div>
         </div>
       </div>
-
       <div class="swatch">
-        <div class="swatch-block" style="background: #7FA8C4;"></div>
+        <div class="swatch-chip" style="background:#7FA8C4;"></div>
         <div class="swatch-info">
           <div class="swatch-name">Dusk Blue</div>
           <div class="swatch-hex">#7FA8C4</div>
-          <div class="swatch-usage">Full-bleed section bg, form field fills, nav modal bg</div>
+          <div class="swatch-use">Nav modal bg, form fills, section alternate</div>
         </div>
       </div>
-
       <div class="swatch">
-        <div class="swatch-block" style="background: #E8D5C0;"></div>
+        <div class="swatch-chip" style="background:#E8D5C0;"></div>
         <div class="swatch-info">
           <div class="swatch-name">Cream</div>
           <div class="swatch-hex">#E8D5C0</div>
-          <div class="swatch-usage">Hero bg, alternating section bg, card backgrounds</div>
+          <div class="swatch-use">Hero bg, alternating sections, card surfaces</div>
         </div>
       </div>
-
       <div class="swatch">
-        <div class="swatch-block" style="background: #D9B899;"></div>
+        <div class="swatch-chip" style="background:#D9B899;"></div>
         <div class="swatch-info">
           <div class="swatch-name">Sand</div>
           <div class="swatch-hex">#D9B899</div>
-          <div class="swatch-usage">Divider lines, secondary text on dark, subtle accents</div>
+          <div class="swatch-use">Dividers, secondary text on dark, HR rules</div>
         </div>
       </div>
-
       <div class="swatch">
-        <div class="swatch-block" style="background: #2C1A10;"></div>
+        <div class="swatch-chip" style="background:#2C1A10;"></div>
         <div class="swatch-info">
           <div class="swatch-name">Ink</div>
           <div class="swatch-hex">#2C1A10</div>
-          <div class="swatch-usage">Body text, primary headings on light, maximum contrast</div>
+          <div class="swatch-use">Body text, headings on light backgrounds</div>
         </div>
       </div>
-
       <div class="swatch">
-        <div class="swatch-block" style="background: #F9F4EE;"></div>
+        <div class="swatch-chip" style="background:#F9F4EE;"></div>
         <div class="swatch-info">
           <div class="swatch-name">Off-White</div>
           <div class="swatch-hex">#F9F4EE</div>
-          <div class="swatch-usage">Page bg, text on rust/dusk, component surfaces</div>
+          <div class="swatch-use">Page bg, text on rust/dusk, component base</div>
         </div>
       </div>
-
     </div>
 
-    <!-- Color Combinations -->
-    <div style="margin-top: var(--space-lg);">
-      <div class="section-label" style="color: var(--sand);">Approved Combinations</div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--space-sm); margin-top: var(--space-sm);">
-        <div style="border-radius: var(--radius-md); overflow: hidden;">
-          <div style="background: var(--rust); padding: 24px; display: flex; align-items: center; justify-content: center;">
-            <span style="font-family: var(--font-display); font-size: 28px; font-weight: 300; color: var(--white);">Aa</span>
+    <div style="margin-top:48px;">
+      <div class="eyebrow on-dark-eyebrow" style="margin-bottom:16px;">Approved Color Pairings</div>
+      <div class="pair-row">
+        <div class="pair-card">
+          <div class="pair-top" style="background:#8B3A14;">
+            <span class="pair-sample" style="color:#F9F4EE;">Aa</span>
           </div>
-          <div style="background: #1a1410; padding: 12px 16px;">
-            <div style="font-family: var(--font-ui); font-size: 10px; color: var(--sand); letter-spacing: 0.15em; text-transform: uppercase;">Off-White on Rust</div>
-          </div>
+          <div class="pair-label">Off-White on Rust</div>
         </div>
-        <div style="border-radius: var(--radius-md); overflow: hidden;">
-          <div style="background: var(--dusk); padding: 24px; display: flex; align-items: center; justify-content: center;">
-            <span style="font-family: var(--font-display); font-size: 28px; font-weight: 300; color: var(--ink);">Aa</span>
+        <div class="pair-card">
+          <div class="pair-top" style="background:#7FA8C4;">
+            <span class="pair-sample" style="color:#2C1A10;">Aa</span>
           </div>
-          <div style="background: #1a1410; padding: 12px 16px;">
-            <div style="font-family: var(--font-ui); font-size: 10px; color: var(--sand); letter-spacing: 0.15em; text-transform: uppercase;">Ink on Dusk</div>
-          </div>
+          <div class="pair-label">Ink on Dusk</div>
         </div>
-        <div style="border-radius: var(--radius-md); overflow: hidden;">
-          <div style="background: var(--cream); padding: 24px; display: flex; align-items: center; justify-content: center;">
-            <span style="font-family: var(--font-display); font-size: 28px; font-weight: 300; color: var(--rust);">Aa</span>
+        <div class="pair-card">
+          <div class="pair-top" style="background:#E8D5C0;">
+            <span class="pair-sample" style="color:#8B3A14;">Aa</span>
           </div>
-          <div style="background: #1a1410; padding: 12px 16px;">
-            <div style="font-family: var(--font-ui); font-size: 10px; color: var(--sand); letter-spacing: 0.15em; text-transform: uppercase;">Rust on Cream</div>
-          </div>
+          <div class="pair-label">Rust on Cream</div>
         </div>
-        <div style="border-radius: var(--radius-md); overflow: hidden;">
-          <div style="background: var(--ink); padding: 24px; display: flex; align-items: center; justify-content: center;">
-            <span style="font-family: var(--font-display); font-size: 28px; font-weight: 300; color: var(--sand);">Aa</span>
+        <div class="pair-card">
+          <div class="pair-top" style="background:#2C1A10;">
+            <span class="pair-sample" style="color:#D9B899;">Aa</span>
           </div>
-          <div style="background: #1a1410; padding: 12px 16px;">
-            <div style="font-family: var(--font-ui); font-size: 10px; color: var(--sand); letter-spacing: 0.15em; text-transform: uppercase;">Sand on Ink</div>
-          </div>
+          <div class="pair-label">Sand on Ink</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     TYPOGRAPHY
-═══════════════════════════════════ -->
-<section id="typography" style="background: var(--white); padding: var(--space-xl) var(--space-xl);">
-  <div style="max-width: 1100px; margin: 0 auto;">
-    <div class="section-label">03 — Typography</div>
-    <h2 class="section-title">Type <em>System</em></h2>
-    <p class="body-copy" style="margin-bottom: var(--space-md);">
-      Three typefaces, each with a clear job. Cormorant Garamond carries the emotional weight. Raleway handles structure. Jost handles body reading. Never swap their roles.
+<!-- TYPOGRAPHY -->
+<section class="type-section" id="type">
+  <div class="type-inner">
+    <div class="eyebrow">03 — Typography</div>
+    <h2 class="sec-title">Type <em>System</em></h2>
+    <p class="body-serif" style="max-width:600px; margin-bottom:0;">
+      Cormorant Garamond carries the brand's entire voice — from massive hero type down to body paragraphs. Raleway handles only functional UI: buttons, labels, eyebrows, form fields. These roles never swap.
     </p>
 
-    <div class="type-grid">
-      <div class="type-block">
-        <div class="type-role">Display — Cormorant Garamond</div>
-        <div class="type-specimen-display">Meet Nicole</div>
-        <div class="type-specimen-italic">Philosophy</div>
-        <div class="type-meta">
-          Google Fonts · 300 Weight (Roman &amp; Italic) · Used at 40px+ only<br>
-          Letter-spacing: -0.01em to 0.02em · Always uppercase or title case
+    <!-- Live specimens -->
+    <div style="background:var(--white); border-radius:var(--r-md); padding:40px 36px; margin-top:40px; border:1px solid rgba(139,58,20,0.08);">
+      <div class="eyebrow" style="margin-bottom:8px;">Live Specimens</div>
+
+      <div class="specimen-eyebrow-text" style="margin-top:24px; margin-bottom:4px;">Eyebrow / Label — Raleway 600, 10px, ls 0.35em</div>
+      <hr style="border:none; border-top:1px solid rgba(139,58,20,0.12); margin:16px 0;">
+
+      <div style="font-family:var(--font-ui); font-size:9px; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; color:var(--rust); margin-bottom:8px;">→ Hero Headline</div>
+      <div class="specimen-hero">Meet <em>Nicole</em></div>
+
+      <div style="font-family:var(--font-ui); font-size:9px; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; color:var(--rust); margin-top:32px; margin-bottom:8px;">→ Section Headline</div>
+      <div class="specimen-section">Philosophy</div>
+
+      <div style="font-family:var(--font-ui); font-size:9px; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; color:var(--rust); margin-top:32px; margin-bottom:8px;">→ Navigation Items</div>
+      <div class="specimen-nav">Home &nbsp;&nbsp; About &nbsp;&nbsp; Services &nbsp;&nbsp; FAQ</div>
+
+      <div style="font-family:var(--font-ui); font-size:9px; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; color:var(--rust); margin-top:32px; margin-bottom:8px;">→ Section Subtitle with Outlined Word</div>
+      <div class="specimen-focus">Areas of <em>Focus</em></div>
+
+      <div style="font-family:var(--font-ui); font-size:9px; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; color:var(--rust); margin-top:32px; margin-bottom:8px;">→ Body Copy (Cormorant, not Jost)</div>
+      <div class="specimen-body">My name is Nicole Covello, a Chicago-based mental health therapist. However you've found yourself here — welcome. Beginning therapy can be a challenging and daunting first step. Take a breath and acknowledge you've made the first step.</div>
+
+      <div style="font-family:var(--font-ui); font-size:9px; font-weight:600; letter-spacing:0.3em; text-transform:uppercase; color:var(--rust); margin-top:32px; margin-bottom:8px;">→ All-Caps Body (used on rust sections)</div>
+      <div class="specimen-caps">TAKE A MOMENT TO ACKNOWLEDGE THE COURAGE IT TOOK TO GET HERE. IT IS POSSIBLE TO FIND CLARITY IN THE MIDST OF WHAT MAY FEEL LIKE CHAOS, AND REACHING OUT IS THE FIRST STEP TOWARD THAT.</div>
+    </div>
+
+    <!-- Font pairing cards -->
+    <div class="pairing-grid">
+      <div class="font-card">
+        <div class="font-role">Display & Body — Primary</div>
+        <div class="font-name-display">Cormorant</div>
+        <div class="font-name-italic">Garamond</div>
+        <div class="font-desc">Used for everything: headlines, section titles, navigation, pull quotes, and all body copy. This is the brand voice.</div>
+        <div class="font-meta">
+          Google Fonts · Free<br>
+          Weights: 300 · 400 · 500 · 600<br>
+          Styles: Roman + Italic<br>
+          Usage: All text except buttons & labels
         </div>
       </div>
-      <div class="type-block">
-        <div class="type-role">UI — Raleway</div>
-        <div class="type-specimen-ui">Areas of Focus</div>
-        <div class="type-specimen-ui" style="font-size: 18px; font-weight: 500; letter-spacing: 0.2em; color: var(--rust);">Book a Session</div>
-        <div class="type-specimen-ui" style="font-size: 12px; font-weight: 600; letter-spacing: 0.35em;">Section Label</div>
-        <div class="type-meta">
-          Google Fonts · 300 / 400 / 500 / 600 · Always uppercase for labels &amp; nav<br>
-          Letter-spacing: 0.2–0.35em for labels · 0.05em for longer UI text
+      <div class="font-card">
+        <div class="font-role">UI Only — Secondary</div>
+        <div class="font-name-ui">Raleway</div>
+        <div class="font-name-ui" style="font-size:14px; letter-spacing:0.3em; color:var(--rust); margin-top:4px;">Book Now</div>
+        <div class="font-name-ui" style="font-size:10px; letter-spacing:0.35em; font-weight:600; color:var(--ink-mid); margin-top:4px;">Section Label</div>
+        <div class="font-desc">Reserved strictly for buttons, eyebrow labels, form field labels, and metadata. Never for paragraphs.</div>
+        <div class="font-meta">
+          Google Fonts · Free<br>
+          Weights: 300 · 400 · 500 · 600<br>
+          Usage: Buttons · Labels · Eyebrows · Form fields
+        </div>
+      </div>
+      <div class="font-card">
+        <div class="font-role">Fallback Stack</div>
+        <div style="font-family: Georgia, serif; font-size:36px; font-weight:300; color:var(--ink); margin-bottom:8px; letter-spacing:0.04em; text-transform:uppercase;">Georgia</div>
+        <div style="font-family: sans-serif; font-size:16px; letter-spacing:0.25em; text-transform:uppercase; color:var(--ink-mid); margin-bottom:16px;">System Sans</div>
+        <div class="font-desc">If Google Fonts fails, Georgia covers Cormorant gracefully. System sans covers Raleway. Always test fallbacks.</div>
+        <div class="font-meta">
+          CSS: 'Cormorant Garamond', Georgia, serif<br>
+          CSS: 'Raleway', -apple-system, sans-serif<br>
+          Test at fonts.google.com before launch
         </div>
       </div>
     </div>
 
-    <div class="type-block" style="margin-top: var(--space-md);">
-      <div class="type-role">Body — Jost</div>
-      <div class="type-specimen-body">
-        My name is Nicole Covello, a Chicago-based mental health therapist. However you've found yourself here — welcome. Beginning therapy can be a challenging and daunting first step. Take a breath and acknowledge you've made the first step.
-      </div>
-      <div class="type-meta">
-        Google Fonts · 300 / 400 Weight · 13–16px body, 11px captions · Line-height 1.7–1.9<br>
-        Letter-spacing: 0.05–0.08em for small caps / labels · Never italic in body context
-      </div>
-    </div>
-
-    <hr class="divider" style="margin-top: var(--space-lg);">
-
-    <div style="margin-top: var(--space-md);">
-      <div class="section-label" style="margin-bottom: var(--space-sm);">Type Scale</div>
-      <table class="type-scale-table">
-        <thead>
-          <tr>
-            <th>Token</th>
-            <th>Example</th>
-            <th>Specs</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Hero Title</td>
-            <td style="font-family: var(--font-display); font-size: 56px; font-weight: 300; line-height: 1.0; color: var(--ink);">Meet <em style="font-style:italic;color:var(--rust)">Nicole</em></td>
-            <td>Cormorant 300 · clamp(52px,8vw,96px) · lh 1.0</td>
-          </tr>
-          <tr>
-            <td>Section H2</td>
-            <td style="font-family: var(--font-display); font-size: 38px; font-weight: 300; color: var(--ink);">Philosophy</td>
-            <td>Cormorant 300 · clamp(36px,5vw,64px) · lh 1.1</td>
-          </tr>
-          <tr>
-            <td>Section H3</td>
-            <td style="font-family: var(--font-ui); font-size: 26px; font-weight: 300; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink);">Areas of Focus</td>
-            <td>Raleway 300 · 24–28px · uppercase · ls 0.05em</td>
-          </tr>
-          <tr>
-            <td>Nav Item</td>
-            <td style="font-family: var(--font-display); font-size: 28px; font-weight: 300; text-transform: uppercase; color: var(--ink);">Services</td>
-            <td>Cormorant 300 · 26–32px · uppercase · lh 1.4</td>
-          </tr>
-          <tr>
-            <td>Section Label</td>
-            <td style="font-family: var(--font-ui); font-size: 10px; font-weight: 600; letter-spacing: 0.35em; text-transform: uppercase; color: var(--rust);">Areas of Focus</td>
-            <td>Raleway 600 · 10px · uppercase · ls 0.35em</td>
-          </tr>
-          <tr>
-            <td>Body</td>
-            <td style="font-family: var(--font-body); font-size: 14px; font-weight: 400; color: var(--ink-mid);">Whatever brought you here, you are welcomed.</td>
-            <td>Jost 400 · 13–16px · lh 1.75–1.9</td>
-          </tr>
-          <tr>
-            <td>Button</td>
-            <td><button class="btn-primary" style="margin:0; pointer-events:none;">Book Now</button></td>
-            <td>Raleway 400 · 12px · uppercase · ls 0.2em</td>
-          </tr>
-          <tr>
-            <td>Caption / Field</td>
-            <td style="font-family: var(--font-ui); font-size: 11px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-mid);">First Name (Required)</td>
-            <td>Raleway 500 · 11px · uppercase · ls 0.15em</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+    <!-- Type scale table -->
+    <table class="ts-table">
+      <thead>
+        <tr>
+          <th>Token</th>
+          <th>Live Example</th>
+          <th>Specs</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Hero</td>
+          <td><span style="font-family:var(--font-display); font-size:52px; font-weight:300; text-transform:uppercase; letter-spacing:0.02em; line-height:1;">Meet <em style="font-style:italic;color:var(--rust)">Nicole</em></span></td>
+          <td>Cormorant 300 · clamp(52px,8vw,108px) · uppercase · lh 0.95</td>
+        </tr>
+        <tr>
+          <td>Sec. Title</td>
+          <td><span style="font-family:var(--font-display); font-size:40px; font-weight:300; text-transform:uppercase; letter-spacing:0.04em;">Philosophy</span></td>
+          <td>Cormorant 300 · clamp(40px,6vw,80px) · uppercase · lh 1.0</td>
+        </tr>
+        <tr>
+          <td>Nav Item</td>
+          <td><span style="font-family:var(--font-display); font-size:30px; font-weight:300; text-transform:uppercase; letter-spacing:0.06em;">Services</span></td>
+          <td>Cormorant 300 · 28–36px · uppercase · ls 0.06em</td>
+        </tr>
+        <tr>
+          <td>Focus Pill</td>
+          <td><span style="font-family:var(--font-display); font-size:24px; font-weight:300; text-transform:uppercase; letter-spacing:0.06em;">Areas of <span style="border:1.5px solid var(--ink); border-radius:100px; padding:0 12px;">Focus</span></span></td>
+          <td>Cormorant 300 · 22–32px · outlined pill on keyword</td>
+        </tr>
+        <tr>
+          <td>Pull Quote</td>
+          <td><span style="font-family:var(--font-display); font-size:20px; font-style:italic; font-weight:300; color:var(--rust);">"When we pause to listen inward..."</span></td>
+          <td>Cormorant 300 Italic · 20–30px · rust color · border-left</td>
+        </tr>
+        <tr>
+          <td>Body</td>
+          <td><span style="font-family:var(--font-display); font-size:18px; font-weight:400; color:var(--ink-mid); letter-spacing:0.01em;">However you've found yourself here — welcome.</span></td>
+          <td>Cormorant 400 · 17–19px · lh 1.75 · ls 0.01em</td>
+        </tr>
+        <tr>
+          <td>Body Caps</td>
+          <td><span style="font-family:var(--font-display); font-size:13px; font-weight:500; text-transform:uppercase; letter-spacing:0.1em; color:var(--ink-mid);">Take a moment to acknowledge the courage...</span></td>
+          <td>Cormorant 500 · 12–14px · uppercase · ls 0.1em · rust sections</td>
+        </tr>
+        <tr>
+          <td>Eyebrow</td>
+          <td><span style="font-family:var(--font-ui); font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.35em; color:var(--rust);">Areas of Focus</span></td>
+          <td>Raleway 600 · 10px · uppercase · ls 0.35em</td>
+        </tr>
+        <tr>
+          <td>Button</td>
+          <td><button class="btn-primary" style="pointer-events:none;">Book Now</button></td>
+          <td>Raleway 400 · 12px · uppercase · ls 0.22em · pill shape</td>
+        </tr>
+        <tr>
+          <td>Form Label</td>
+          <td><span style="font-family:var(--font-ui); font-size:10px; font-weight:500; text-transform:uppercase; letter-spacing:0.18em;">First Name (Required)</span></td>
+          <td>Raleway 500 · 10–11px · uppercase · ls 0.18em</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     COMPONENTS
-═══════════════════════════════════ -->
-<section class="components-bg" id="components" style="padding: var(--space-xl) var(--space-xl);">
-  <div style="max-width: 1100px; margin: 0 auto;">
-    <div class="section-label">04 — Components</div>
-    <h2 class="section-title">UI <em>Library</em></h2>
-    <p class="body-copy" style="margin-bottom: var(--space-md);">
-      Every interactive element follows these exact patterns. No new button styles. No new field treatments. Extend, don't invent.
+<!-- COMPONENTS -->
+<section class="comp-section" id="components">
+  <div class="comp-inner">
+    <div class="eyebrow">04 — Components</div>
+    <h2 class="sec-title">UI <em>Library</em></h2>
+    <p class="body-serif" style="max-width:600px; margin-bottom:0;">
+      Every interactive element follows these exact patterns. Build from these. Don't invent new button shapes, field styles, or type treatments.
     </p>
+    <div class="comp-grid">
 
-    <div class="component-grid">
-
-      <!-- BUTTONS -->
-      <div class="component-card">
-        <h4>Buttons</h4>
+      <div class="comp-card">
+        <div class="comp-label">Buttons</div>
         <button class="btn-primary">Book Now</button>
-        <button class="btn-secondary">Learn More</button>
-        <div class="btn-row">
+        <button class="btn-outline">Learn More</button>
+        <div class="ghost-bg">
           <button class="btn-ghost">Book a Session</button>
         </div>
-        <div style="margin-top: var(--space-sm); font-family: var(--font-body); font-size: 12px; color: var(--ink-mid); line-height: 1.7;">
-          <strong style="font-family: var(--font-ui); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rust);">Rules:</strong><br>
-          Pill radius (100px) on all buttons. Uppercase Raleway 12px. Primary = rust bg. Ghost = white border, used on dusk or rust backgrounds only. Never use more than one primary CTA per viewport.
+        <div style="margin-top:16px; font-family:var(--font-display); font-size:15px; color:var(--ink-mid); line-height:1.7;">
+          Pill radius (100px) on all. Raleway 12px uppercase. Primary = rust bg. Outline = rust border. Ghost = white border on dusk/rust bg only. One primary CTA per viewport max.
         </div>
       </div>
 
-      <!-- FORM FIELDS -->
-      <div class="component-card">
-        <h4>Form Fields</h4>
-        <div class="field-wrapper">
-          <div class="field-demo">
-            <div>
-              <label class="field-label">First Name (Required)</label>
-              <input class="field-input" type="text" placeholder="" disabled>
-            </div>
-            <div>
-              <label class="field-label">Email (Required)</label>
-              <input class="field-input" type="email" placeholder="" disabled>
-            </div>
-          </div>
+      <div class="comp-card">
+        <div class="comp-label">Contact Form</div>
+        <div class="form-demo">
+          <label class="field-label">First Name (Required)</label>
+          <input class="field-input" type="text" disabled placeholder="">
+          <label class="field-label">Last Name (Required)</label>
+          <input class="field-input" type="text" disabled placeholder="">
+          <label class="field-label">Email (Required)</label>
+          <input class="field-input" type="email" disabled placeholder="">
         </div>
-        <div style="margin-top: var(--space-sm); font-family: var(--font-body); font-size: 12px; color: var(--ink-mid); line-height: 1.7;">
-          <strong style="font-family: var(--font-ui); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rust);">Rules:</strong><br>
-          Dusk blue (#7FA8C4) fill, no border. Labels in white Raleway 500 uppercase. Rust section background. No rounded pill — use 6px radius.
+        <div style="margin-top:16px; font-family:var(--font-display); font-size:15px; color:var(--ink-mid); line-height:1.7;">
+          Dusk blue (#7FA8C4) fill inputs, no border. Raleway 500 white labels. Always on rust section bg. 6px border-radius on fields.
         </div>
       </div>
 
-      <!-- ARCH PHOTO -->
-      <div class="component-card">
-        <h4>Arch Photo Frame</h4>
-        <div class="arch-demo">
-          <span class="arch-demo-label">Photo<br>Here</span>
+      <div class="comp-card">
+        <div class="comp-label">Arch Portrait Frame</div>
+        <div class="arch-frame">
+          <div class="arch-label">Photo<br>Here</div>
         </div>
-        <div style="text-align: center; margin-bottom: var(--space-sm);">
-          <span style="font-family: var(--font-ui); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rust);">border-radius: 50% 50% 0 0 / 60% 60% 0 0</span>
-        </div>
-        <div style="font-family: var(--font-body); font-size: 12px; color: var(--ink-mid); line-height: 1.7;">
-          <strong style="font-family: var(--font-ui); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rust);">Rules:</strong><br>
-          The signature arch frame used for Nicole's portrait. Always centered, always portrait orientation. The butterfly image overlaps behind it for the hero. Never crop faces.
+        <div style="text-align:center; margin-bottom:14px; font-family:'Courier New',monospace; font-size:11px; color:var(--rust); opacity:0.6;">border-radius: 50% 50% 0 0 / 60% 60% 0 0</div>
+        <div style="font-family:var(--font-display); font-size:15px; color:var(--ink-mid); line-height:1.7;">
+          Signature arch for Nicole's portrait. Centered. Portrait only. Butterfly motif overlaid behind in hero. Never crop faces tight.
         </div>
       </div>
 
-      <!-- NAV OVERLAY -->
-      <div class="component-card">
-        <h4>Navigation Overlay</h4>
+      <div class="comp-card">
+        <div class="comp-label">Navigation Overlay</div>
         <div class="nav-demo">
-          <div class="nav-item">Home</div>
-          <div class="nav-item">About</div>
-          <div class="nav-item">Services</div>
-          <div class="nav-item">FAQ</div>
-          <button class="btn-primary" style="margin-top: 8px;">Book Now</button>
+          <div class="nav-link">Home</div>
+          <div class="nav-link">About</div>
+          <div class="nav-link">Services</div>
+          <div class="nav-link">Book a Session</div>
+          <div class="nav-link">FAQ</div>
+          <button class="btn-primary" style="margin-top:12px;">Book Now</button>
         </div>
-        <div style="margin-top: var(--space-sm); font-family: var(--font-body); font-size: 12px; color: var(--ink-mid); line-height: 1.7;">
-          <strong style="font-family: var(--font-ui); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rust);">Rules:</strong><br>
-          Full-screen dusk blue modal. Nav items in Cormorant Garamond 300, uppercase. Hamburger toggle top-right. CTA button pinned bottom-center.
+        <div style="margin-top:16px; font-family:var(--font-display); font-size:15px; color:var(--ink-mid); line-height:1.7;">
+          Full-screen dusk blue. Nav in Cormorant 300 uppercase. Hamburger top-right. CTA pinned bottom-center.
         </div>
       </div>
 
-      <!-- PHILOSOPHY BLOCK -->
-      <div class="component-card">
-        <h4>Philosophy / Dark Section</h4>
+      <div class="comp-card">
+        <div class="comp-label">Philosophy / Rust Dark Section</div>
         <div class="phil-demo">
           <h3>Philosophy</h3>
-          <p>Take a moment to acknowledge the courage it took to get here. It is possible to find clarity in the midst of what may feel like chaos...</p>
+          <p>Take a moment to acknowledge the courage it took to get here. It is possible to find clarity in the midst of what may feel like chaos, and reaching out is the first step.</p>
         </div>
-        <div style="margin-top: var(--space-sm); font-family: var(--font-body); font-size: 12px; color: var(--ink-mid); line-height: 1.7;">
-          <strong style="font-family: var(--font-ui); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rust);">Rules:</strong><br>
-          Full rust bg. Heading in Cormorant 300, large, uppercase. Body in Raleway 400, all-caps, 11px, sand/cream tone, generous line-height.
+        <div style="margin-top:16px; font-family:var(--font-display); font-size:15px; color:var(--ink-mid); line-height:1.7;">
+          Full rust bg. Heading in Cormorant 300 giant uppercase. Body in Cormorant 500 all-caps small, sand color, generous line-height 1.9.
         </div>
       </div>
 
-      <!-- WAVE TRANSITION -->
-      <div class="component-card">
-        <h4>Wave Section Divider</h4>
+      <div class="comp-card">
+        <div class="comp-label">Areas of Focus Header</div>
+        <div class="focus-demo">
+          <div class="areas-heading">Areas of <em>Focus</em></div>
+          <div class="areas-sub">Managing ADHD and Supporting Loved Ones<br>Anxiety & Depression<br>Attachment Patterns<br>Life Transitions</div>
+        </div>
+        <div style="margin-top:16px; font-family:var(--font-display); font-size:15px; color:var(--ink-mid); line-height:1.7;">
+          Signature treatment: pill/oval border around the key word. Cormorant 300 uppercase. List items in smaller Cormorant uppercase on dusk bg.
+        </div>
+      </div>
+
+      <div class="comp-card" style="grid-column: span 2;">
+        <div class="comp-label">Wave Section Divider — SVG</div>
         <div class="wave-demo">
-          <div class="top"></div>
-          <svg class="wave-svg" viewBox="0 0 400 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
-            <path d="M0,0 C100,60 300,60 400,0 L400,60 L0,60 Z" fill="#8B3A14"/>
+          <div class="wave-top"></div>
+          <svg viewBox="0 0 800 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="width:100%; display:block;">
+            <path d="M0,0 C200,80 600,80 800,0 L800,80 L0,80 Z" fill="#8B3A14"/>
           </svg>
-          <div class="bottom"></div>
+          <div class="wave-btm"></div>
         </div>
-        <div style="margin-top: var(--space-sm); font-family: var(--font-body); font-size: 12px; color: var(--ink-mid); line-height: 1.7;">
-          <strong style="font-family: var(--font-ui); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rust);">Rules:</strong><br>
-          SVG wave used to transition between cream sections and rust sections. Single arc, no jagged edges. Also used as cream-to-rust and rust-to-dusk transitions.
+        <div style="margin-top:16px; font-family:var(--font-display); font-size:15px; color:var(--ink-mid); line-height:1.7;">
+          SVG wave is the brand's signature structural transition — used between cream→rust and dusk→rust. Single gentle arc. No jagged edges. Never use a straight horizontal line between sections.
         </div>
       </div>
 
@@ -1327,240 +1426,216 @@
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     PAGE MAP
-═══════════════════════════════════ -->
-<section class="page-map-bg" id="page-map">
-  <div style="max-width: 1100px; margin: 0 auto;">
-    <div class="section-label">05 — Page Structure</div>
-    <h2 class="section-title" style="color: var(--white);">Website <em style="color: var(--sand);">Architecture</em></h2>
-    <p class="body-copy" style="color: rgba(255,255,255,0.65); margin-bottom: var(--space-md);">
-      The site flows like a therapy session: arrive, be welcomed, understand, trust, act. Every section has exactly one job. Color backgrounds alternate to create rhythm and signal transition.
+<!-- PAGE ARCHITECTURE -->
+<section class="map-section" id="pages">
+  <div class="map-inner">
+    <div class="eyebrow" style="color:rgba(217,184,153,0.7);">05 — Page Architecture</div>
+    <h2 class="sec-title" style="color:var(--white);">Website <em style="color:var(--sand);">Structure</em></h2>
+    <p style="font-family:var(--font-display); font-size:18px; color:rgba(232,213,192,0.6); max-width:560px; line-height:1.75; letter-spacing:0.01em;">
+      The site flows like a therapy session: arrive, be welcomed, understand, trust, act. Each section has one job. Color backgrounds create rhythm and signal transition.
     </p>
-    <div class="page-sections">
-      <div class="page-section-card">
-        <div class="num">01</div>
-        <h4>Hero / Meet Nicole</h4>
-        <p>Butterfly + arch portrait. Large display type. Single introductory paragraph. "Book Now" CTA.</p>
-        <span class="bg-tag">Cream bg</span>
+    <div class="map-grid">
+      <div class="map-card">
+        <div class="map-num">01</div>
+        <div class="map-name">Hero / Meet Nicole</div>
+        <div class="map-desc">Butterfly + arch portrait. Giant display type. Intro paragraph. "Book Now" CTA.</div>
+        <span class="map-bg-tag">Cream bg</span>
       </div>
-      <div class="page-section-card">
-        <div class="num">02</div>
-        <h4>Philosophy</h4>
-        <p>Full-rust section. Long, empathetic body copy. No images. Courageous, direct language.</p>
-        <span class="bg-tag">Rust bg</span>
+      <div class="map-card">
+        <div class="map-num">02</div>
+        <div class="map-name">Philosophy</div>
+        <div class="map-desc">Full-rust. Long empathetic copy in all-caps Cormorant. No images. Pure voice.</div>
+        <span class="map-bg-tag">Rust bg</span>
       </div>
-      <div class="page-section-card">
-        <div class="num">03</div>
-        <h4>Quote / Motif</h4>
-        <p>Textured image (sand swirl) with overlaid italic quote. Botanical logo mark centered on dusk.</p>
-        <span class="bg-tag">Dusk bg</span>
+      <div class="map-card">
+        <div class="map-num">03</div>
+        <div class="map-name">Quote Motif</div>
+        <div class="map-desc">Textured swirl image, overlaid italic Cormorant quote. Botanical mark on dusk.</div>
+        <span class="map-bg-tag">Dusk bg</span>
       </div>
-      <div class="page-section-card">
-        <div class="num">04</div>
-        <h4>Areas of Focus</h4>
-        <p>Blue-to-rust wave transition. ADHD, anxiety, attachment, life transitions. Light-touch list.</p>
-        <span class="bg-tag">Dusk → Rust</span>
+      <div class="map-card">
+        <div class="map-num">04</div>
+        <div class="map-name">Areas of Focus</div>
+        <div class="map-desc">Blue-to-rust wave. Outlined pill on "Focus." ADHD, anxiety, attachment, transitions.</div>
+        <span class="map-bg-tag">Dusk → Rust</span>
       </div>
-      <div class="page-section-card">
-        <div class="num">05</div>
-        <h4>Services / Pricing</h4>
-        <p>Service tiers. Rust section. "Basic" style pricing card. Book Now CTA per tier.</p>
-        <span class="bg-tag">Rust bg</span>
+      <div class="map-card">
+        <div class="map-num">05</div>
+        <div class="map-name">Services / Pricing</div>
+        <div class="map-desc">Rust section. Pricing tiers. "Book now" per tier. Placeholder-ready copy.</div>
+        <span class="map-bg-tag">Rust bg</span>
       </div>
-      <div class="page-section-card">
-        <div class="num">06</div>
-        <h4>Our Services Detail</h4>
-        <p>Cream section with wave transition to rust. Mountain imagery. Services description copy.</p>
-        <span class="bg-tag">Cream → Rust</span>
+      <div class="map-card">
+        <div class="map-num">06</div>
+        <div class="map-name">Our Services Detail</div>
+        <div class="map-desc">Cream → wave → rust. Mountain imagery in rounded card. Services explanation.</div>
+        <span class="map-bg-tag">Cream → Rust</span>
       </div>
-      <div class="page-section-card">
-        <div class="num">07</div>
-        <h4>Contact / Book</h4>
-        <p>Abstract sphere image. Rust background. First/Last/Email form with dusk-fill inputs.</p>
-        <span class="bg-tag">Rust bg</span>
+      <div class="map-card">
+        <div class="map-num">07</div>
+        <div class="map-name">Contact / Book</div>
+        <div class="map-desc">Abstract sphere image. Rust bg. First / Last / Email form. Dusk-fill inputs.</div>
+        <span class="map-bg-tag">Rust bg</span>
       </div>
-      <div class="page-section-card">
-        <div class="num">08</div>
-        <h4>FAQ</h4>
-        <p>Accordion component. Calm, conversational answers. Raleway body text.</p>
-        <span class="bg-tag">Cream bg</span>
+      <div class="map-card">
+        <div class="map-num">08</div>
+        <div class="map-name">FAQ</div>
+        <div class="map-desc">Accordion. Cormorant body answers. Calm, conversational. Cream bg.</div>
+        <span class="map-bg-tag">Cream bg</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     LAYOUT RULES
-═══════════════════════════════════ -->
-<section id="layout" style="background: var(--white); padding: var(--space-xl) var(--space-xl);">
-  <div style="max-width: 1100px; margin: 0 auto;">
-    <div class="section-label">06 — Layout Rules</div>
-    <h2 class="section-title">Spacing &amp; <em>Structure</em></h2>
-    <p class="body-copy" style="margin-bottom: var(--space-md);">
-      The layout must feel unhurried. Generous whitespace signals that the visitor is not being rushed. These rules are non-negotiable.
+<!-- LAYOUT -->
+<section class="layout-section" id="layout">
+  <div class="layout-inner">
+    <div class="eyebrow">06 — Layout & Spacing</div>
+    <h2 class="sec-title">Space &amp; <em>Structure</em></h2>
+    <p class="body-serif" style="max-width:600px; margin-bottom:0;">
+      The layout must feel unhurried. Generous whitespace signals the visitor is not being rushed. These constraints are non-negotiable.
     </p>
-    <div class="rules-grid">
+    <div class="rule-grid">
       <div class="rule-card">
-        <h4>Margin & Padding</h4>
-        <p>Mobile: 24px horizontal padding. Desktop: clamp(56px, 8vw, 120px). Vertical section padding: 80px mobile / 120px desktop. Never compress sections to fit more content.</p>
+        <div class="rule-name">Horizontal Padding</div>
+        <div class="rule-body">Mobile: 28px. Tablet: 48px. Desktop: clamp(56px, 8vw, 120px). Never compress sections to fit more content.</div>
       </div>
       <div class="rule-card">
-        <h4>Max Width</h4>
-        <p>Content max-width: 1100px, centered. Body copy max-width: 640px. Never let body copy span full width on desktop — it breaks readability and warmth.</p>
+        <div class="rule-name">Vertical Rhythm</div>
+        <div class="rule-body">Section padding: 88px vertical minimum. Between body elements: 20–28px. Between sections: no margin — background color handles separation.</div>
       </div>
       <div class="rule-card">
-        <h4>Color Rhythm</h4>
-        <p>Sections alternate: Cream → Rust → Dusk → Rust → Cream → Rust. Never two cream sections adjacent. Never two rust sections adjacent without a dusk or transition break.</p>
+        <div class="rule-name">Max Widths</div>
+        <div class="rule-body">Content container: 1100px centered. Body copy: 600px max. Never let paragraphs span full desktop width.</div>
       </div>
       <div class="rule-card">
-        <h4>Wave Transitions</h4>
-        <p>Curved SVG wave dividers are used between contrasting section colors (cream-to-rust, dusk-to-rust). The wave curves downward into the next section color. Single gentle arc only.</p>
+        <div class="rule-name">Color Rhythm</div>
+        <div class="rule-body">Cream → Rust → Dusk → Rust → Cream → Rust. Never two creams adjacent. Wave SVGs handle all color transitions.</div>
       </div>
       <div class="rule-card">
-        <h4>Image Treatment</h4>
-        <p>Photos always in cards with border-radius 16–32px. Portrait images use the arch frame. Texture/nature images (sand swirl, sphere, mountains) bleed to edges within their section containers.</p>
+        <div class="rule-name">Border Radius</div>
+        <div class="rule-body">Cards & images: 16–32px. Buttons: 100px pill. Form fields: 6px. Arch frame: CSS border-radius arch formula. Never mix radius families.</div>
       </div>
       <div class="rule-card">
-        <h4>Mobile Priority</h4>
-        <p>The site was designed mobile-first and should feel perfect on mobile. All grids collapse to single column. Navigation is hamburger-only on mobile. Hero text stacks above the CTA with adequate breathing room.</p>
+        <div class="rule-name">Mobile Priority</div>
+        <div class="rule-body">All grids collapse to 1-col. Nav is hamburger-only. Hero type uses clamp(). Buttons go full-width. Test on 390px viewport.</div>
       </div>
     </div>
 
-    <!-- Spacing Scale -->
-    <hr class="divider">
-    <div class="section-label">Spacing Scale</div>
-    <div style="display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-top: var(--space-sm);">
-      <div style="text-align: center;">
-        <div style="width: 8px; height: 8px; background: var(--rust); border-radius: 2px; margin: 0 auto 6px;"></div>
-        <div style="font-family: var(--font-ui); font-size: 10px; color: var(--rust); letter-spacing: 0.15em; text-transform: uppercase;">xs<br>8px</div>
-      </div>
-      <div style="text-align: center;">
-        <div style="width: 16px; height: 16px; background: var(--rust); border-radius: 3px; margin: 0 auto 6px;"></div>
-        <div style="font-family: var(--font-ui); font-size: 10px; color: var(--rust); letter-spacing: 0.15em; text-transform: uppercase;">sm<br>16px</div>
-      </div>
-      <div style="text-align: center;">
-        <div style="width: 32px; height: 32px; background: var(--rust); border-radius: 4px; margin: 0 auto 6px;"></div>
-        <div style="font-family: var(--font-ui); font-size: 10px; color: var(--rust); letter-spacing: 0.15em; text-transform: uppercase;">md<br>32px</div>
-      </div>
-      <div style="text-align: center;">
-        <div style="width: 56px; height: 56px; background: var(--rust); border-radius: 6px; margin: 0 auto 6px;"></div>
-        <div style="font-family: var(--font-ui); font-size: 10px; color: var(--rust); letter-spacing: 0.15em; text-transform: uppercase;">lg<br>56px</div>
-      </div>
-      <div style="text-align: center;">
-        <div style="width: 88px; height: 88px; background: var(--rust); border-radius: 8px; margin: 0 auto 6px; opacity: 0.7;"></div>
-        <div style="font-family: var(--font-ui); font-size: 10px; color: var(--rust); letter-spacing: 0.15em; text-transform: uppercase;">xl<br>88px</div>
+    <div style="margin-top:48px;">
+      <div class="eyebrow" style="margin-bottom:8px;">Spacing Scale</div>
+      <div class="space-row">
+        <div class="space-item">
+          <div class="space-box" style="width:8px;height:8px;"></div>
+          <div class="space-label">xs · 8px</div>
+        </div>
+        <div class="space-item">
+          <div class="space-box" style="width:16px;height:16px;"></div>
+          <div class="space-label">sm · 16px</div>
+        </div>
+        <div class="space-item">
+          <div class="space-box" style="width:28px;height:28px;"></div>
+          <div class="space-label">md · 28px</div>
+        </div>
+        <div class="space-item">
+          <div class="space-box" style="width:48px;height:48px;"></div>
+          <div class="space-label">lg · 48px</div>
+        </div>
+        <div class="space-item">
+          <div class="space-box" style="width:88px;height:88px; opacity:0.65;"></div>
+          <div class="space-label">xl · 88px</div>
+        </div>
+        <div class="space-item">
+          <div class="space-box" style="width:120px;height:120px; opacity:0.4;"></div>
+          <div class="space-label">2xl · 120px</div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     LOGO USAGE
-═══════════════════════════════════ -->
-<section class="logo-zone" id="logo">
-  <div style="max-width: 1100px; margin: 0 auto;">
-    <div class="section-label" style="color: var(--sand);">07 — Logo Usage</div>
-    <h2 class="section-title" style="color: var(--white);">Logo &amp; <em style="color: var(--sand);">Mark</em></h2>
-    <p class="body-copy" style="color: rgba(232,213,192,0.65); margin-bottom: var(--space-md);">
-      The logo mark is a heart-nautilus hybrid — a shell forming a heart shape — symbolizing inner growth through self-exploration. It appears top-left in the navigation at all times.
+<!-- LOGO -->
+<section class="logo-section" id="logo">
+  <div class="logo-inner">
+    <div class="eyebrow" style="color:rgba(217,184,153,0.7);">07 — Logo Usage</div>
+    <h2 class="sec-title" style="color:var(--white);">Logo &amp; <em style="color:var(--sand);">Mark</em></h2>
+    <p style="font-family:var(--font-display); font-size:18px; color:rgba(232,213,192,0.6); max-width:560px; line-height:1.75; letter-spacing:0.01em; margin-bottom:0;">
+      The mark is a heart-nautilus hybrid — a shell forming a heart — symbolizing inner growth through self-exploration. Always top-left in nav.
     </p>
-    <div class="logo-variants">
-      <div class="logo-variant-box on-rust">
-        <div class="logo-mark light">♡</div>
-        <div class="logo-wordmark light">Nicole Covello</div>
-        <div class="logo-sub light">Mental Health Therapy</div>
-        <div class="logo-label">On Rust</div>
+    <div class="logo-grid">
+      <div class="logo-box" style="background:var(--rust);">
+        <div class="logo-mark-circle" style="color:var(--white); border-color:rgba(255,255,255,0.4);">♡</div>
+        <div class="logo-wm" style="color:var(--white);">Nicole Covello</div>
+        <div class="logo-wm-sub" style="color:var(--sand);">Mental Health Therapy</div>
+        <div class="logo-variant-name" style="color:var(--sand);">On Rust</div>
       </div>
-      <div class="logo-variant-box on-dusk">
-        <div class="logo-mark light">♡</div>
-        <div class="logo-wordmark light">Nicole Covello</div>
-        <div class="logo-sub light">Mental Health Therapy</div>
-        <div class="logo-label">On Dusk</div>
+      <div class="logo-box" style="background:var(--dusk);">
+        <div class="logo-mark-circle" style="color:var(--ink); border-color:rgba(44,26,16,0.3);">♡</div>
+        <div class="logo-wm" style="color:var(--ink);">Nicole Covello</div>
+        <div class="logo-wm-sub" style="color:var(--ink);">Mental Health Therapy</div>
+        <div class="logo-variant-name" style="color:var(--ink);">On Dusk</div>
       </div>
-      <div class="logo-variant-box on-cream">
-        <div class="logo-mark dark">♡</div>
-        <div class="logo-wordmark dark">Nicole Covello</div>
-        <div class="logo-sub dark" style="color: rgba(44,26,16,0.45);">Mental Health Therapy</div>
-        <div class="logo-label dark">On Cream</div>
+      <div class="logo-box" style="background:var(--cream);">
+        <div class="logo-mark-circle" style="color:var(--rust); border-color:rgba(139,58,20,0.3);">♡</div>
+        <div class="logo-wm" style="color:var(--ink);">Nicole Covello</div>
+        <div class="logo-wm-sub" style="color:var(--ink-mid);">Mental Health Therapy</div>
+        <div class="logo-variant-name" style="color:var(--ink-mid);">On Cream</div>
       </div>
     </div>
-    <div style="margin-top: var(--space-md); padding: var(--space-md); background: rgba(255,255,255,0.06); border-radius: var(--radius-md);">
-      <div style="font-family: var(--font-ui); font-size: 10px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: var(--sand); margin-bottom: 12px;">Logo Rules</div>
-      <ul style="list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-        <li style="font-family: var(--font-body); font-size: 13px; color: rgba(255,255,255,0.6); padding-left: 16px; position: relative;">
-          <span style="position: absolute; left: 0; color: var(--sand);">→</span>
-          Minimum size: 40px height on screen
-        </li>
-        <li style="font-family: var(--font-body); font-size: 13px; color: rgba(255,255,255,0.6); padding-left: 16px; position: relative;">
-          <span style="position: absolute; left: 0; color: var(--sand);">→</span>
-          Clear space: equal to the mark's height on all sides
-        </li>
-        <li style="font-family: var(--font-body); font-size: 13px; color: rgba(255,255,255,0.6); padding-left: 16px; position: relative;">
-          <span style="position: absolute; left: 0; color: var(--sand);">→</span>
-          Never stretch or distort the mark
-        </li>
-        <li style="font-family: var(--font-body); font-size: 13px; color: rgba(255,255,255,0.6); padding-left: 16px; position: relative;">
-          <span style="position: absolute; left: 0; color: var(--sand);">→</span>
-          Never use on a busy photo background
-        </li>
-        <li style="font-family: var(--font-body); font-size: 13px; color: rgba(255,255,255,0.6); padding-left: 16px; position: relative;">
-          <span style="position: absolute; left: 0; color: var(--sand);">→</span>
-          The oval botanical icon appears as secondary motif only
-        </li>
-        <li style="font-family: var(--font-body); font-size: 13px; color: rgba(255,255,255,0.6); padding-left: 16px; position: relative;">
-          <span style="position: absolute; left: 0; color: var(--sand);">→</span>
-          Always white or sand on colored backgrounds
-        </li>
-      </ul>
+    <div style="margin-top:28px; background:rgba(255,255,255,0.06); border-radius:var(--r-md); padding:28px 28px;">
+      <div style="font-family:var(--font-display); font-size:18px; font-weight:400; text-transform:uppercase; letter-spacing:0.06em; color:var(--sand); margin-bottom:16px;">Logo Rules</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+        <div style="font-family:var(--font-display); font-size:16px; color:rgba(255,255,255,0.55); line-height:1.6; padding-left:16px; position:relative;"><span style="position:absolute;left:0;color:var(--sand);">→</span> Minimum size: 40px height on screen</div>
+        <div style="font-family:var(--font-display); font-size:16px; color:rgba(255,255,255,0.55); line-height:1.6; padding-left:16px; position:relative;"><span style="position:absolute;left:0;color:var(--sand);">→</span> Clear space: mark height on all four sides</div>
+        <div style="font-family:var(--font-display); font-size:16px; color:rgba(255,255,255,0.55); line-height:1.6; padding-left:16px; position:relative;"><span style="position:absolute;left:0;color:var(--sand);">→</span> Never stretch or distort the mark</div>
+        <div style="font-family:var(--font-display); font-size:16px; color:rgba(255,255,255,0.55); line-height:1.6; padding-left:16px; position:relative;"><span style="position:absolute;left:0;color:var(--sand);">→</span> Never on a busy photo background</div>
+        <div style="font-family:var(--font-display); font-size:16px; color:rgba(255,255,255,0.55); line-height:1.6; padding-left:16px; position:relative;"><span style="position:absolute;left:0;color:var(--sand);">→</span> Oval botanical icon = secondary motif only</div>
+        <div style="font-family:var(--font-display); font-size:16px; color:rgba(255,255,255,0.55); line-height:1.6; padding-left:16px; position:relative;"><span style="position:absolute;left:0;color:var(--sand);">→</span> Always white or sand on colored backgrounds</div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     DO / DON'T
-═══════════════════════════════════ -->
-<section style="background: var(--cream); padding: var(--space-xl) var(--space-xl);" id="do-dont">
-  <div style="max-width: 1100px; margin: 0 auto;">
-    <div class="section-label">08 — Brand Standards</div>
-    <h2 class="section-title">Do's &amp; <em>Don'ts</em></h2>
-    <div class="do-dont-grid">
+<!-- DO DON'T -->
+<section class="dd-section" id="dd">
+  <div class="dd-inner">
+    <div class="eyebrow">08 — Brand Standards</div>
+    <h2 class="sec-title">Do's &amp; <em>Don'ts</em></h2>
+    <div class="dd-grid">
       <div class="do-card">
-        <h4>✓ Do</h4>
-        <ul>
-          <li>Use Cormorant Garamond for all large display type — it is the brand's soul</li>
-          <li>Let the rust section backgrounds carry weight — they signal depth and intentionality</li>
-          <li>Use generous whitespace between all elements — the site should never feel crowded</li>
-          <li>Write body copy in all-caps Raleway on rust backgrounds — it mirrors the site's voice: clear, direct, warm</li>
-          <li>Use the wave SVG divider to transition between sections — it's the brand's signature structural element</li>
-          <li>Let images breathe — always pair photos with ample surrounding space</li>
-          <li>Write with empathy and specificity — copy should speak directly to the visitor's internal experience</li>
-          <li>Keep the color palette to the 7 defined colors — never introduce new brand colors</li>
+        <div class="dd-head">Do</div>
+        <ul class="dd-list">
+          <li>Use Cormorant Garamond for everything — headlines, body, nav, quotes. It is the brand's primary voice.</li>
+          <li>Use Raleway only for buttons, eyebrow labels, and form field labels. Nothing else.</li>
+          <li>Let rust sections breathe — no cramming. Long copy is a feature, not a problem.</li>
+          <li>Use the wave SVG between every contrasting section. It's the brand's signature structural element.</li>
+          <li>Write body copy in all-caps Cormorant 500 on rust sections — it mirrors the philosophy pages exactly.</li>
+          <li>Keep body paragraphs under 600px wide at all times.</li>
+          <li>Write with empathy and specificity. Copy speaks directly to the visitor's inner experience.</li>
+          <li>Test on mobile 390px — the site was designed mobile-first.</li>
         </ul>
       </div>
       <div class="dont-card">
-        <h4>✗ Don't</h4>
-        <ul>
-          <li>Don't use more than one primary CTA button per viewport section</li>
-          <li>Don't place body text at full desktop width — max 640px for readability</li>
-          <li>Don't use Cormorant Garamond below 36px — it loses its grace at small sizes</li>
-          <li>Don't use the dusk blue as a text color on white — contrast is insufficient</li>
-          <li>Don't introduce photography of strangers without explicit brand approval — imagery should feel editorial and grounded</li>
-          <li>Don't use gradients — the palette transitions are handled via wave SVGs and section blocks, not linear gradients</li>
-          <li>Don't use drop shadows on text or UI elements — they conflict with the flat, warm aesthetic</li>
-          <li>Don't use clinical or sterile language — always warm, always human, never jargon-heavy</li>
+        <div class="dd-head">Don't</div>
+        <ul class="dd-list">
+          <li>Don't use Jost, Lora, Playfair, or any other serif. Cormorant Garamond only.</li>
+          <li>Don't use more than one primary CTA button per viewport.</li>
+          <li>Don't place body text at full desktop width — it breaks warmth and readability.</li>
+          <li>Don't use Cormorant below 14px — use Cormorant 500 uppercase at small sizes only.</li>
+          <li>Don't use dusk blue as body text on white — contrast is too low.</li>
+          <li>Don't use gradients. Section transitions are always via wave SVG or background color blocks.</li>
+          <li>Don't add drop shadows to text or cards. The aesthetic is flat, warm, and paper-like.</li>
+          <li>Don't use clinical or sterile language. This is a human practice — every word must feel human.</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════
-     FOOTER
-═══════════════════════════════════ -->
+<!-- FOOTER -->
 <footer class="kit-footer">
-  <div class="kit-footer-brand">Nicole Covello Therapy</div>
-  <div class="kit-footer-meta">Brand Guidelines v1.0 · June 2026 · All rights reserved</div>
+  <div class="footer-brand">Nicole Covello Therapy</div>
+  <div class="footer-meta">Brand Guidelines v1.0 · June 2026 · Confidential</div>
 </footer>
 
 </body>
